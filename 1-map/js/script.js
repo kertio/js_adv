@@ -22,9 +22,13 @@ const objArr = [
 const resSet = new Set();
 
 objArr.forEach(({id, name}) => {
-		!Array.from(resSet.keys()).find(el =>
-			(id === el['id'] && name === el['name']) ? true : false)
-		&& resSet.add({ id, name });
+		const arr = Array.from(resSet.keys());
+
+		if (arr.find(el => id === el['id'])) {
+			return;
+		} else { 
+			resSet.add({ id, name });
+		}
 	}
 );
 

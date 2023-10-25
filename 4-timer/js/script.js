@@ -1,8 +1,10 @@
-function accDaysFromMonth(from) {
-    return month.slice(from + 1).reduce((acc, val) => acc += val, 0);
+const page = {
+    months: document.querySelector('.months'),
+    days: document.querySelector('.days'),
+    hours: document.querySelector('.hours'),
+    minutes: document.querySelector('.minutes'),
+    seconds: document.querySelector('.seconds'),
 }
-
-
 
 const timer = () => {
     const month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -23,13 +25,14 @@ const timer = () => {
         
         const months = month.slice(currDate.getMonth()).reduce((acc, val, index) => index, 0);
         
+        page.months.innerText = months < 10 ? `0${months}` : months;
+        page.days.innerText = days < 10 ? `0${days}` : days;
+        page.hours.innerText = hour < 10 ? `0${hour}` : hour;
+        page.minutes.innerText = minute < 10 ? `0${minute}` : minute;
+        page.seconds.innerText = second < 10 ? `0${second}` : second;
 
-        console.log(`До нового года осталось: m${months} d${days} h${hour} m${minute} s${second}`);
     }, 1000);
+
 }
-
-
-
-
 
 timer();

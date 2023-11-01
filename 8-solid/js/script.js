@@ -18,37 +18,35 @@ class Billing {
     }
 }
 
-class FixBilling extends Billing {}
+class FixBilling extends Billing {
+    #fixAmount = 10;
+
+    calculateTotal() {
+        return super.calculateTotal() * this.#fixAmount;
+    }
+}
 
 class HourBilling extends Billing {
-    constructor(hour, amount) {
-        super(hour * amount);
+    #hourAmount = 24;
+
+    calculateTotal() {
+        return super.calculateTotal() * this.#hourAmount;
     }
 }
 
 class ItemBilling extends Billing {
-    constructor(arr, amount) {
-        super(arr.length * amount);
-    }
-}
-
-class OtherBilling {
-    #amount;
-    constructor(amount) {
-        this.#amount = amount;
-    }
+    #itemBilling = [10, 20, 30, 40, 50];
 
     calculateTotal() {
-        return this.#amount;
+        return super.calculateTotal() * this.#itemBilling.length;
     }
 }
 
 const billings = [
-    new Billing(100),
-    new FixBilling(12345),
-    new HourBilling(20, 15),
-    new ItemBilling([1, 2, 3, 4], 200),
-    new OtherBilling(100500)
+    new Billing(1),
+    new FixBilling(2),
+    new HourBilling(3),
+    new ItemBilling(4)
 ];
 
 function printTotal(bill) {

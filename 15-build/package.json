@@ -1,0 +1,16 @@
+{
+  "name": "15-build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "rollup ./src/main.js --file ./dist/bundle.js --format iife -w",
+    "dev": "live-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.1.0",
+    "rollup": "^4.2.0"
+  }
+}

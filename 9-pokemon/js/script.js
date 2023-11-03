@@ -4,12 +4,16 @@ const req = new XMLHttpRequest();
 req.open('GET', 'https://pokeapi.co/api/v2/pokemon/ditto');
 req.send();
 
+req.addEventListener('error', (e) => {
+    console.log(`${e.type}: ${e.loaded} bytes transferred\n`);
+});
+
 req.addEventListener('load', function () {
     if (this.status === 200) {
         const {abilities} = JSON.parse(this.responseText);
         const {url} = abilities[0].ability;
         
-        req.open('GET', url);
+        req.open('GET', url + 1);
         req.send();
     
         req.addEventListener('load', function () {
@@ -22,7 +26,6 @@ req.addEventListener('load', function () {
             } else {
                 console.warn('Ошибка получения описания абилки');        
             }
-
         })
     } else {
         console.warn('Ошибка получения списка абилок');

@@ -1,0 +1,10 @@
+body {
+    font-family: 'Sometype Mono', monospace;
+    font-size: 16px;
+    background-color: rgb(238, 233, 233);
+    color: rgb(66, 63, 60)
+}
+
+@import 'reset';
+@import 'app';
+@import 'timer';
